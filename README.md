@@ -43,6 +43,6 @@ This is a mini project developed by Monish and Logesh for our college coursework
 ## 👨‍💻 Authors
 
 - [Monish Doss](https://github.com/MonishDoss)  
-- Logesh
+- [Logesh](https://github.com/Lokesh0256)
 
 ---
