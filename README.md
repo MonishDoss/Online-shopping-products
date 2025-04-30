@@ -34,10 +34,10 @@ This is a mini project developed by Monish and Logesh for our college coursework
 - Payment success/failure handling
 
 ## 📁 Folder Structure (Optional to update later)
-📦online-shopping-product
-  ├── 🧩 backend (Spring Boot)
-  ├── 🎨 frontend (React)
-  └── 📜 README.md
+  📦online-shopping-product
+      ├── 🧩 backend (Spring Boot).
+      ├── 🎨 frontend (React).
+      └── 📜 README.md
 
 
 ## 👨‍💻 Authors
