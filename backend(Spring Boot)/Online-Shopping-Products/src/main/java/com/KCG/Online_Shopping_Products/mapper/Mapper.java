@@ -1,4 +1,4 @@
-package com.KCG.Online_Shopping_Products.util;
+package com.KCG.Online_Shopping_Products.mapper;
 
 import com.KCG.Online_Shopping_Products.dto.*;
 import com.KCG.Online_Shopping_Products.entity.*;
