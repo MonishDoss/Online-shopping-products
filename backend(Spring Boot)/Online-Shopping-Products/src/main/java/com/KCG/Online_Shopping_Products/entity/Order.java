@@ -1,6 +1,6 @@
 package com.KCG.Online_Shopping_Products.entity;
 
-import com.KCG.Online_Shopping_Products.entity.Enum.OrderStatus;
+import com.KCG.Online_Shopping_Products.Enum.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
