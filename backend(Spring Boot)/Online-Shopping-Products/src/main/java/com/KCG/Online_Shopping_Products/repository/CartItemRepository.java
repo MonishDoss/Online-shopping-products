@@ -3,4 +3,8 @@ package com.KCG.Online_Shopping_Products.repository;
 import com.KCG.Online_Shopping_Products.entity.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CartItemRepository extends JpaRepository<CartItem, Long> {}
+import java.util.List;
+
+public interface CartItemRepository extends JpaRepository<CartItem, Long> {
+    List<CartItem> findByCartId(Long cartId);
+}
