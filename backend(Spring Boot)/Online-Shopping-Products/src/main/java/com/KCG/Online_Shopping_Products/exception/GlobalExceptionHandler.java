@@ -3,10 +3,10 @@ package com.KCG.Online_Shopping_Products.exception;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import java.time.LocalDateTime;
-import java.util.*;
 
-@ControllerAdvice
+import java.time.LocalDateTime;
+
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiError> handleGeneralException(Exception ex, WebRequest request) {
         ApiError error = new ApiError(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "An unexpected error occurred",
+                ex.getMessage(),
                 LocalDateTime.now(),
                 request.getDescription(false)
         );

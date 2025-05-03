@@ -7,10 +7,13 @@ import com.KCG.Online_Shopping_Products.dto.response.AuthResponse;
 import com.KCG.Online_Shopping_Products.entity.User;
 import com.KCG.Online_Shopping_Products.repository.UserRepository;
 import com.KCG.Online_Shopping_Products.service.Interface.AuthService;
+import com.KCG.Online_Shopping_Products.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.authentication.BadCredentialsException;
 
 import java.util.List;
 
@@ -32,7 +35,9 @@ public class AuthServiceImpl implements AuthService {
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(RoleType.CUSTOMER);
+
+        // ✅ Set role based on request
+        user.setRole(request.getRole() == null ? RoleType.CUSTOMER : RoleType.valueOf(request.getRole()));
 
         userRepository.save(user);
 
@@ -65,5 +70,11 @@ public class AuthServiceImpl implements AuthService {
         );
 
         return new AuthResponse(token, user.getRole().name());
+    }
+
+    public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;
     }
 }
