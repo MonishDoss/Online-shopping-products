@@ -15,4 +15,13 @@ public class ProductResponse {
     private double price;
     private String categoryName;
     private List<String> imagesBase64;
+
+    public ProductResponse(Long id, String name, String description, double price, String categoryName, List<String> imagesBase64) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.categoryName = categoryName;
+        this.imagesBase64 = imagesBase64;
+    }
 }

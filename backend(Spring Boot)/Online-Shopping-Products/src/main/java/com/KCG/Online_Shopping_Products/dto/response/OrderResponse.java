@@ -13,4 +13,11 @@ public class OrderResponse {
     private Long userId;
     private List<Long> productIds;
     private String orderStatus;
+
+    public OrderResponse(Long id, Long userId, List<Long> productIds, String orderStatus) {
+        this.id = id;
+        this.userId = userId;
+        this.productIds = productIds;
+        this.orderStatus = orderStatus;
+    }
 }
