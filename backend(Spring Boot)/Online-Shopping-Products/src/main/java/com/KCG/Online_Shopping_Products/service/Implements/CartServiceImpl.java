@@ -80,4 +80,11 @@ public class CartServiceImpl implements CartService {
         cart.getItems().clear();
         cartRepository.save(cart);
     }
+
+    public CartServiceImpl(CartRepository cartRepository, CartItemRepository cartItemRepository, ProductRepository productRepository, UserRepository userRepository) {
+        this.cartRepository = cartRepository;
+        this.cartItemRepository = cartItemRepository;
+        this.productRepository = productRepository;
+        this.userRepository = userRepository;
+    }
 }

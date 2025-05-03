@@ -75,4 +75,13 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getOrdersByUser(Long userId) {
         return orderRepository.findByUserId(userId);
     }
+
+    public OrderServiceImpl(OrderRepository orderRepository, CartRepository cartRepository, CartItemRepository cartItemRepository, ProductRepository productRepository, OrderItemRepository orderItemRepository, UserRepository userRepository) {
+        this.orderRepository = orderRepository;
+        this.cartRepository = cartRepository;
+        this.cartItemRepository = cartItemRepository;
+        this.productRepository = productRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.userRepository = userRepository;
+    }
 }
