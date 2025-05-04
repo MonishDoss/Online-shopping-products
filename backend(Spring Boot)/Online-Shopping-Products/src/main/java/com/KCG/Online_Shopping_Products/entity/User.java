@@ -9,7 +9,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User {
     @Id
@@ -24,7 +25,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private RoleType role = RoleType.CUSTOMER;
+    private RoleType role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;

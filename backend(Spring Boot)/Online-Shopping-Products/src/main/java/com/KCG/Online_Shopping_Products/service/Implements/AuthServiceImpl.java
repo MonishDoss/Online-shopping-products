@@ -18,7 +18,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
@@ -36,7 +35,6 @@ public class AuthServiceImpl implements AuthService {
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        // ✅ Set role based on request
         user.setRole(request.getRole() == null ? RoleType.CUSTOMER : RoleType.valueOf(request.getRole()));
 
         userRepository.save(user);

@@ -4,7 +4,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @ToString
 public class CategoryResponse {
     private Long id;

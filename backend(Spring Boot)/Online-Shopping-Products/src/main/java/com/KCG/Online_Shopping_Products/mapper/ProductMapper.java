@@ -45,7 +45,7 @@ public class ProductMapper {
                 .map(data -> {
                     ProductImage image = new ProductImage();
                     image.setData(data);
-                    image.setProduct(product); // maintain bidirectional link
+                    image.setProduct(product);
                     return image;
                 })
                 .collect(Collectors.toList());

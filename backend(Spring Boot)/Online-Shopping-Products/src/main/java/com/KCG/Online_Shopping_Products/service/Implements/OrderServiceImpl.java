@@ -1,7 +1,9 @@
 package com.KCG.Online_Shopping_Products.service.Implements;
 
 import com.KCG.Online_Shopping_Products.Enum.OrderStatus;
+import com.KCG.Online_Shopping_Products.dto.response.OrderDetailsResponse;
 import com.KCG.Online_Shopping_Products.entity.*;
+import com.KCG.Online_Shopping_Products.exception.ResourceNotFoundException;
 import com.KCG.Online_Shopping_Products.repository.*;
 import com.KCG.Online_Shopping_Products.service.Interface.OrderService;
 import jakarta.transaction.Transactional;
@@ -13,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
@@ -83,5 +84,36 @@ public class OrderServiceImpl implements OrderService {
         this.productRepository = productRepository;
         this.orderItemRepository = orderItemRepository;
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public OrderDetailsResponse getOrderDetailsById(Long orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+
+        OrderDetailsResponse response = new OrderDetailsResponse();
+        response.setOrderId(order.getId());
+        response.setOrderDate(order.getDate());
+        response.setStatus(order.getStatus().name());
+
+        List<Product> items = order.getOrderItems().stream().map(item -> {
+            Product p = new Product();
+            p.setId(item.getProduct().getId());
+            p.setName(item.getProduct().getName());
+//            p.setQuantity(item.getQuantity());
+            return p;
+        }).toList();
+
+        response.setProducts(items);
+        return response;
+    }
+
+    @Override
+    public void updateOrderStatus(Long orderId, OrderStatus status) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+
+        order.setStatus(status);
+        orderRepository.save(order);
     }
 }

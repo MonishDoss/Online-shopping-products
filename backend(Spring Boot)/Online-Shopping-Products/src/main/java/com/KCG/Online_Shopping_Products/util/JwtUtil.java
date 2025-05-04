@@ -28,7 +28,7 @@ public class JwtUtil {
                 .map(authority -> authority.getAuthority())
                 .filter(authority -> authority.startsWith("ROLE_"))
                 .findFirst()
-                .orElse("ROLE_CUSTOMER");  // Default role if not found (e.g., for testing)
+                .orElse("ROLE_CUSTOMER");
 
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())

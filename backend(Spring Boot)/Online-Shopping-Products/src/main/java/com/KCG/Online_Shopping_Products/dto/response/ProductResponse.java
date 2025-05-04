@@ -6,7 +6,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class ProductResponse {
     private Long id;

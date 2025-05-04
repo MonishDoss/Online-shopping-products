@@ -4,8 +4,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class CartItemRequest {
     private Long cartId;
